@@ -8,7 +8,7 @@ Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.authors     = ['Kevin Sylvestre']
   s.email       = ['kevin@clutter.com']
-  s.homepage    = 'https://github.com/clutter/wt'
+  s.homepage    = 'https://github.com/clutter/changed'
   s.summary     = 'Provides insights into what changed.'
   s.description = '⏱'
   s.license     = 'MIT'
