@@ -1,10 +1,14 @@
 AllCops:
+  TargetRubyVersion: 2.5.0
   Exclude:
     - Gemfile
     - Gemfile.lock
     - spec/dummy/db/schema.rb
     - spec/dummy/bin/**/*
     - vendor/**/*
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
 
 Layout/AccessModifierIndentation:
   EnforcedStyle: outdent

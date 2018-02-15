@@ -4,7 +4,7 @@ RSpec.describe Changed::Audit, type: :model do
   let(:changer) { build(:user) }
 
   around do |example|
-    Changed.config(changer: changer) do
+    Changed.perform(changer: changer) do
       example.run
     end
   end

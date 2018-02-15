@@ -54,14 +54,22 @@ def configure_audit_changer
 end
 ```
 
-To customize the timestamp or changer manually the following code can be used:
+To execute code with a different the timestamp or changer use the following:
 
 ```ruby
 employee = Employee.find_by(name: "...")
-Changed.config(changer: User.current, timestamp: Time.now) do
+Changed.perform(changer: User.current, timestamp: Time.now) do
   employee.name = "..."
   employee.save!
 end
+```
+
+## Configuration
+
+Specifying `default_changer_proc` gives a changer if one cannot be inferred otherwise:
+
+```ruby
+Changed.config.default_changer_proc = ->{ User.system }
 ```
 
 ## License
