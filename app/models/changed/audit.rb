@@ -14,7 +14,7 @@ module Changed
 
     belongs_to :changer, polymorphic: true, required: false
     belongs_to :audited, polymorphic: true
-    has_many :associations, dependent: :destroy
+    has_many :associations, dependent: :destroy, class_name: 'Changed::Association'
 
     scope :optimized, -> { preload(:changer, :audited, associations: :associated) }
     scope :ordered, -> { order(id: :desc) }
