@@ -1,0 +1,49 @@
+AllCops:
+  Exclude:
+    - Gemfile
+    - Gemfile.lock
+    - spec/dummy/db/schema.rb
+    - spec/dummy/bin/**/*
+    - vendor/**/*
+
+Layout/AccessModifierIndentation:
+  EnforcedStyle: outdent
+
+Layout/AlignParameters:
+  EnforcedStyle: with_fixed_indentation
+
+Layout/EmptyLinesAroundBlockBody:
+  Enabled: false
+
+Layout/EmptyLinesAroundClassBody:
+  Enabled: false
+
+Layout/EmptyLinesAroundModuleBody:
+  Enabled: false
+
+Lint/AmbiguousBlockAssociation:
+  Enabled: false
+
+Style/SpecialGlobalVars:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/BlockDelimiters:
+  Enabled: false
+
+Style/RegexpLiteral:
+  Enabled: false
+
+Style/TrailingCommaInLiteral:
+  EnforcedStyleForMultiline: consistent_comma
+
+Metrics/BlockLength:
+  Enabled: false
+
+Metrics/LineLength:
+  Max: 120
+
+Metrics/MethodLength:
+  Enabled: false
