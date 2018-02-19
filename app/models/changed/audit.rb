@@ -64,7 +64,7 @@ module Changed
       changeset.any? || associations.any?
     end
 
-    def changed?(key)
+    def changed_field?(key)
       fields.map(&:name).include?(key)
     end
 
