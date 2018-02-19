@@ -261,17 +261,17 @@ RSpec.describe Changed::Audit, type: :model do
     end
   end
 
-  describe '#changed?' do
+  describe '#changed_field?' do
     let(:changer) { build(:user) }
     let(:audited) { build(:part) }
     let(:audit) { build(:audit, changer: changer, audited: audited, changeset: { name: %w[Gear Bolt] }) }
 
     it 'is truthy if an attribute changed' do
-      expect(audit.changed?('name')).to be_truthy
+      expect(audit.changed_field?('name')).to be_truthy
     end
 
     it 'is falsey if an attribute is unchanged' do
-      expect(audit.changed?('sku')).to be_falsey
+      expect(audit.changed_field?('sku')).to be_falsey
     end
   end
 end
