@@ -72,6 +72,10 @@ Specifying `default_changer_proc` gives a changer if one cannot be inferred othe
 Changed.config.default_changer_proc = ->{ User.system }
 ```
 
+## Status
+
+[![CircleCI](https://circleci.com/gh/clutter/changed.svg?style=svg&circle-token=77cf2fadb88cfc6b16bf85643826152305dac75f)](https://circleci.com/gh/clutter/changed)
+
 ## License
 
 The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
