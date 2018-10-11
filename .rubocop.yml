@@ -40,7 +40,13 @@ Style/BlockDelimiters:
 Style/RegexpLiteral:
   Enabled: false
 
-Style/TrailingCommaInLiteral:
+Style/ExpandPathArguments:
+  Enabled: false
+
+Style/TrailingCommaInArrayLiteral:
+  EnforcedStyleForMultiline: consistent_comma
+
+Style/TrailingCommaInHashLiteral:
   EnforcedStyleForMultiline: consistent_comma
 
 Metrics/BlockLength:
