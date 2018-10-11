@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :vendor do
-    name 'Manufacturing Inc.'
+    name { 'Manufacturing Inc.' }
   end
 end
