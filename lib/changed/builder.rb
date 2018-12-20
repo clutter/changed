@@ -20,7 +20,6 @@ module Changed
       define_callbacks_for_associations
       define_after_create_callback
       define_after_update_callback
-      define_after_destroy_callback
     end
 
   private
@@ -110,15 +109,5 @@ module Changed
         audit.save! if audit.anything?
       end
     end
-
-    def define_after_destroy_callback
-      keys = @keys
-      @klass.after_destroy do |resource|
-        audit = resource.audit
-        audit.track(Audit::Event::DESTROY, keys)
-        audit.save! if resource.id
-      end
-    end
-
   end
 end

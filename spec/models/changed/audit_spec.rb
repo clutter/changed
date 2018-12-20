@@ -27,7 +27,7 @@ RSpec.describe Changed::Audit, type: :model do
       expect { widget.save! }.to change { Changed::Audit.creates.count }
       expect { widget.update!(quantity: 3) }.to change { Changed::Audit.updates.count }
       expect { widget.update!(quantity: 4) }.to change { Changed::Audit.updates.count }
-      expect { widget.destroy! }.to change { Changed::Audit.destroys.count }
+      expect { widget.destroy! }.to change { Changed::Audit.count }.to 0
     end
 
     it 'does not track anything if non audited attributes are changed' do
