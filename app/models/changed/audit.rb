@@ -3,13 +3,11 @@ module Changed
     module Event
       CREATE = 'create'.freeze
       UPDATE = 'update'.freeze
-      DESTROY = 'destroy'.freeze
     end
 
     EVENTS = [
       Event::CREATE,
       Event::UPDATE,
-      Event::DESTROY,
     ].freeze
 
     belongs_to :changer, polymorphic: true, required: false
@@ -20,10 +18,9 @@ module Changed
     scope :ordered, -> { order(id: :desc) }
     scope :creates, -> { where(event: Event::CREATE) }
     scope :updates, -> { where(event: Event::UPDATE) }
-    scope :destroys, -> { where(event: Event::DESTROY) }
 
     validates :event, inclusion: { in: EVENTS }
-    validates :audited, presence: true, unless: ->(audit) { audit.event.eql?(Event::DESTROY) }
+    validates :audited, presence: true
 
     scope :for, ->(audited) { where(audited: audited).ordered }
 

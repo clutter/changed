@@ -14,7 +14,7 @@ module Changed
     end
 
     included do
-      has_many :audits, -> { ordered }, as: :audited, class_name: 'Changed::Audit'
+      has_many :audits, -> { ordered }, as: :audited, class_name: 'Changed::Audit', dependent: :destroy
 
       # ==== Overview
       #

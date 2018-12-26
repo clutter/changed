@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [v1.0.1] - Tuesday, December 18, 2018
+
+ - Add `dependent: :destroy` to audits association
+ - Stop tracking `Event::DESTROY` when model is destroyed
+
 ## [v1.0.0] - Thursday, February 15, 2018
 
  - Enabling changed configuration for the `Changed.config.default_changer_proc`.
