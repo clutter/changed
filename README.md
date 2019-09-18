@@ -64,6 +64,41 @@ Changed.perform(changer: User.current, timestamp: Time.now) do
 end
 ```
 
+### Fields
+
+Fields (i.e. name, email, phone, etc) are tracked inside the `changeset` key of a generated audit. They can be queried using:
+
+```sql
+SELECT
+  "audits"."timestamp",
+  "audits"."changeset"->'name'->>0 AS "was",
+  "audits"."changeset"->'name'->>1 AS "now",
+  "changers"."name" AS "changer"
+FROM "audits"
+JOIN "users" AS "changers" ON "audits"."changer_id" = "changers"."id" AND "audits"."changer_type" = 'User'
+WHERE "audits"."changeset"->>'name' IS NOT NULL
+```
+
+### Associations
+
+Associations (i.e. user, favourites, etc) are tracked by the `associations` table. They can be queried using:
+
+```sql
+SELECT
+  "audits"."timestamp",
+  "changers"."name" AS "changer",
+  CASE "associations"."kind"
+  WHEN '0' THEN 'ADD'
+  WHEN '1' THEN 'REMOVE'
+  END AS "kind",
+  "users"."name" AS "user"
+FROM "audits"
+JOIN "associations" ON "associations"."audit_id" = "audits"."id"
+JOIN "users" ON "associations"."associated_id" = "users"."id" AND "associations"."associated_type" = 'User'
+JOIN "users" AS "changers" ON "audits"."changer_id" = "changers"."id" AND "audits"."changer_type" = 'User'
+WHERE "associations"."name" = 'user'
+```
+
 ## Configuration
 
 Specifying `default_changer_proc` gives a changer if one cannot be inferred otherwise:
