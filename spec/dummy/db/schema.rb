@@ -2,15 +2,15 @@
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
 #
-# Note that this schema.rb definition is the authoritative source for your
-# database schema. If you need to create the application database on another
-# system, you should be using db:schema:load, not running all the migrations
-# from scratch. The latter is a flawed and unsustainable approach (the more migrations
-# you'll amass, the slower it'll run and the greater likelihood for issues).
+# This file is the source Rails uses to define your schema when running `rails
+# db:schema:load`. When creating a new database, `rails db:schema:load` tends to
+# be faster and is potentially less error prone than running all of your
+# migrations from scratch. Old migrations may fail to apply correctly if those
+# migrations use external dependencies or application code.
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180213183247) do
+ActiveRecord::Schema.define(version: 2018_02_13_183247) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,8 +21,8 @@ ActiveRecord::Schema.define(version: 20180213183247) do
     t.bigint "associated_id", null: false
     t.string "name", null: false
     t.integer "kind", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.index ["associated_type", "associated_id"], name: "index_changed_associations_on_associated_type_and_associated_id"
     t.index ["audit_id"], name: "index_changed_associations_on_audit_id"
   end
@@ -35,8 +35,8 @@ ActiveRecord::Schema.define(version: 20180213183247) do
     t.jsonb "changeset", default: {}, null: false
     t.string "event", null: false
     t.datetime "timestamp", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.index ["audited_type", "audited_id"], name: "index_changed_audits_on_audited_type_and_audited_id"
     t.index ["changer_type", "changer_id"], name: "index_changed_audits_on_changer_type_and_changer_id"
   end
@@ -44,8 +44,8 @@ ActiveRecord::Schema.define(version: 20180213183247) do
   create_table "parts", force: :cascade do |t|
     t.string "sku", null: false
     t.string "name", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "parts_widgets", id: false, force: :cascade do |t|
@@ -57,14 +57,14 @@ ActiveRecord::Schema.define(version: 20180213183247) do
 
   create_table "users", force: :cascade do |t|
     t.string "name", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "vendors", force: :cascade do |t|
     t.string "name", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "widgets", force: :cascade do |t|
@@ -75,8 +75,8 @@ ActiveRecord::Schema.define(version: 20180213183247) do
     t.decimal "price", default: "0.0", null: false
     t.integer "quantity", default: 0, null: false
     t.datetime "available", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.index ["vendor_id"], name: "index_widgets_on_vendor_id"
   end
 

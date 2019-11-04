@@ -1,4 +1,4 @@
-class CreateChangedAssociations < ActiveRecord::Migration[5.1]
+class CreateChangedAssociations < ActiveRecord::Migration[6.0]
   def change
     create_table :changed_associations do |t|
       t.references :audit, null: false, index: true

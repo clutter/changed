@@ -1,4 +1,4 @@
-class CreateJoinTablePartsWidgets < ActiveRecord::Migration[5.1]
+class CreateJoinTablePartsWidgets < ActiveRecord::Migration[6.0]
   def change
     create_join_table :parts, :widgets do |t|
       t.index %i[part_id widget_id]

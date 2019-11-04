@@ -1,4 +1,4 @@
-class CreateParts < ActiveRecord::Migration[5.1]
+class CreateParts < ActiveRecord::Migration[6.0]
   def change
     create_table :parts do |t|
       t.string :sku, null: false
