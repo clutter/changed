@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :association, class: 'Changed::Association' do
-    name 'vendor'
+    name { 'vendor' }
   end
 end
