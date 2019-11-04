@@ -47,7 +47,7 @@ GEM
       tzinfo (~> 1.1)
     arel (8.0.0)
     ast (2.4.0)
-    brakeman (4.1.1)
+    brakeman (4.7.1)
     builder (3.2.3)
     byebug (10.0.0)
     concurrent-ruby (1.1.5)
