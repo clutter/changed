@@ -3,11 +3,12 @@ jobs:
   build:
     docker:
       -
-        image: circleci/ruby:2.5.0-node-browsers
+        image: circleci/ruby:2.6.3-node-browsers
         environment:
           BUNDLE_JOBS: 4
           BUNDLE_RETRY: 4
           BUNDLE_PATH: vendor/bundle
+          BUNDLER_VERSION: 2.0.2
           RAILS_ENV: test
           RACK_ENV: test
           PGHOST: localhost
@@ -24,6 +25,8 @@ jobs:
       -
         type: cache-restore
         key: bundle-{{ checksum "Gemfile.lock" }}
+      -
+        run: gem install bundler --version "$BUNDLER_VERSION"
       -
         run: bundle check || bundle install
       -
