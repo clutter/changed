@@ -10,8 +10,8 @@ RSpec.describe Changed::Audit, type: :model do
   end
 
   it do
-    should belong_to :changer
-    should belong_to :audited
+    should belong_to(:changer).optional
+    should belong_to(:audited)
 
     should_not allow_value('other').for(:event)
 
