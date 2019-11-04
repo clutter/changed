@@ -63,8 +63,12 @@ module Changed
     end
 
     def define_callbacks_for_belongs_to(association)
-      callback = after_create_or_update_for_belongs_to_callback(association.name,
-        association.foreign_key, association.foreign_type, association.class_name)
+      callback = after_create_or_update_for_belongs_to_callback(
+        association.name,
+        association.foreign_key,
+        association.foreign_type,
+        association.class_name
+      )
 
       @klass.after_update callback
       @klass.after_create callback

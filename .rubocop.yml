@@ -1,10 +1,11 @@
 AllCops:
-  TargetRubyVersion: 2.5.0
+  TargetRubyVersion: 2.6.3
   Exclude:
     - Gemfile
     - Gemfile.lock
     - spec/dummy/db/schema.rb
     - spec/dummy/bin/**/*
+    - spec/dummy/config/environments/**/*
     - vendor/**/*
 
 Style/FrozenStringLiteralComment:
@@ -37,10 +38,16 @@ Style/Documentation:
 Style/BlockDelimiters:
   Enabled: false
 
+Style/ExpandPathArguments:
+  Enabled: false
+
 Style/RegexpLiteral:
   Enabled: false
 
-Style/TrailingCommaInLiteral:
+Style/TrailingCommaInArrayLiteral:
+  EnforcedStyleForMultiline: consistent_comma
+
+Style/TrailingCommaInHashLiteral:
   EnforcedStyleForMultiline: consistent_comma
 
 Metrics/BlockLength:
