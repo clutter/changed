@@ -1,4 +1,4 @@
-class CreateChangedAudits < ActiveRecord::Migration[5.1]
+class CreateChangedAudits < ActiveRecord::Migration[6.0]
   def change
     create_table :changed_audits do |t|
       t.references :changer, polymorphic: true, null: true, index: true
