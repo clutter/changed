@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [v1.1.0] - Sunday, November 3, 2019
+
+ - Bump development and release dependencies to latest versions
+
 ## [v1.0.1] - Tuesday, December 18, 2018
 
  - Add `dependent: :destroy` to audits association
