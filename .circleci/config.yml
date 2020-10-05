@@ -3,12 +3,12 @@ jobs:
   build:
     docker:
       -
-        image: circleci/ruby:2.6.3-node-browsers
+        image: circleci/ruby:2.6.6
         environment:
           BUNDLE_JOBS: 4
           BUNDLE_RETRY: 4
           BUNDLE_PATH: vendor/bundle
-          BUNDLER_VERSION: 2.0.2
+          BUNDLER_VERSION: 2.1.4
           RAILS_ENV: test
           RACK_ENV: test
           PGHOST: localhost
