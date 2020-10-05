@@ -1,5 +1,5 @@
 AllCops:
-  TargetRubyVersion: 2.6.3
+  TargetRubyVersion: 2.6.6
   Exclude:
     - Gemfile
     - Gemfile.lock
@@ -14,7 +14,7 @@ Style/FrozenStringLiteralComment:
 Layout/AccessModifierIndentation:
   EnforcedStyle: outdent
 
-Layout/AlignParameters:
+Layout/ParameterAlignment:
   EnforcedStyle: with_fixed_indentation
 
 Layout/EmptyLinesAroundBlockBody:
