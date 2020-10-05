@@ -1,4 +1,6 @@
-version: 2
+version: 2.1
+orbs:
+  ruby: circleci/ruby@1.1.1
 jobs:
   build:
     docker:
@@ -22,61 +24,37 @@ jobs:
       - checkout
 
       # bundler
-      -
-        type: cache-restore
-        key: bundle-{{ checksum "Gemfile.lock" }}
-      -
-        run: gem install bundler --version "$BUNDLER_VERSION"
-      -
-        run: bundle check || bundle install
-      -
-        type: cache-save
-        key: bundle-{{ checksum "Gemfile.lock" }}
-        paths:
-          - vendor/bundle
+      - ruby/install-deps:
+          bundler-version: 2.1.4
 
       # postgres
-      -
-        run: dockerize -wait tcp://localhost:5432
+      - run: dockerize -wait tcp://localhost:5432
 
       # database
-      -
-        run: bundle exec rake db:create db:schema:load
+      - run: bundle exec rake db:create db:schema:load
 
       # rubocop
-      -
-        type: shell
-        command: bundle exec rubocop --format progress --format html --out tmp/rubocop.html
+      - run: bundle exec rubocop --format progress --format html --out tmp/rubocop.html
 
       # brakeman
-      -
-        type: shell
-        command: bundle exec brakeman -z --format html --output tmp/brakeman.html
+      - run: bundle exec brakeman -z --format html --output tmp/brakeman.html
 
       # rspec
-      -
-        type: shell
-        command: bundle exec rspec --format progress --format RspecJunitFormatter --out tmp/rspec/rspec.xml
+      - run: bundle exec rspec --format progress --format RspecJunitFormatter --out tmp/rspec/rspec.xml
 
       # results
-      -
-        type: test-results-store
-        path: tmp/rspec
+      - store_test_results:
+          path: tmp/rspec
 
       # artifacts
-      -
-        type: artifacts-store
-        path: coverage
-        destination: coverage
+      - store_artifacts:
+          path: coverage
+          destination: coverage
 
-      # artifacts
-      -
-        type: artifacts-store
-        path: tmp/rubocop.html
-        destination: rubocop.html
+      - store_artifacts:
+          path: tmp/rubocop.html
+          destination: rubocop.html
 
-      # artifacts
-      -
-        type: artifacts-store
-        path: tmp/brakeman.html
-        destination: brakeman.html
+      - store_artifacts:
+          path: tmp/brakeman.html
+          destination: brakeman.html
