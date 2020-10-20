@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [v1.2.0] - Monday, October 20, 2020
+
+ - Bump gem dependencies 
+
 ## [v1.1.0] - Sunday, November 3, 2019
 
  - Bump development and release dependencies to latest versions
