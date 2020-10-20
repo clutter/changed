@@ -1,5 +1,7 @@
 # Changed
 
+[![Gem Version](https://badge.fury.io/rb/changed.svg)](https://badge.fury.io/rb/changed)
+
 A gem for tracking what **changed** when.
 
 ## Installation
@@ -42,7 +44,7 @@ class Employee
 end
 ```
 
-To ensure the proper 'changer' is tracked add the following code to your application controller:
+To ensure the proper 'changer' is tracked, add the following code to your application controller:
 
 ```ruby
 before_action :configure_audit_changer
@@ -54,7 +56,7 @@ def configure_audit_changer
 end
 ```
 
-To execute code with a different the timestamp or changer use the following:
+To execute code with a different timestamp or changer, use the following:
 
 ```ruby
 employee = Employee.find_by(name: "...")
